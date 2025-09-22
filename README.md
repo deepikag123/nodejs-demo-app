@@ -1,4 +1,3 @@
-
 # Node.js Demo App with CI/CD using GitHub Actions and Docker Hub
 
 This project demonstrates a simple **Node.js application** containerized using **Docker** and deployed with an automated **CI/CD pipeline** via **GitHub Actions**.
@@ -11,29 +10,37 @@ This project demonstrates a simple **Node.js application** containerized using *
 - **CI/CD Tool:** GitHub Actions
 - **Registry:** Docker Hub
 
-The pipeline automatically builds and pushes the Docker image to **Docker Hub** whenever changes are pushed to the `main` branch.
+Whenever code is pushed to the `main` branch:
+1. GitHub Actions builds the Docker image.
+2. The image is pushed to **Docker Hub** automatically.
+3. The image can then be pulled and run on any Docker-enabled system.
 
 ---
 
 ## 🛠️ Setup & Workflow
 
-### 1. Dockerfile
-A `Dockerfile` is included to containerize the Node.js app.
+### 1. Application Files
+- `app.js` → simple Node.js server
+- `package.json` → Node dependencies
+- `Dockerfile` → steps to build the image
+- `.github/workflows/main.yml` → GitHub Actions pipeline config
 
 ### 2. GitHub Actions Workflow
-Located in `.github/workflows/main.yml`:
-- Triggers on push to `main`
-- Builds Docker image
-- Pushes image to Docker Hub repository:  
-  `worldofdeepika/nodejs-demo-app:latest`
+- Runs on every push to `main`
+- Builds and tags the Docker image
+- Logs in to Docker Hub
+- Pushes image to:  
+  **`worldofdeepika/nodejs-demo-app:latest`**
 
 ### 3. Docker Hub Repository
-The final image is hosted at:  
-👉 [Docker Hub Link](https://hub.docker.com/r/worldofdeepika/nodejs-demo-app)
+👉 [Docker Hub Repo](https://hub.docker.com/r/worldofdeepika/nodejs-demo-app)
 
 ---
 
-## ▶️ Running the App (on any machine with Docker)
+## ▶️ Running the App
+
+On any machine with Docker installed:
+
 ```bash
 # Pull the latest image
 docker pull worldofdeepika/nodejs-demo-app:latest
